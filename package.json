@@ -1,0 +1,53 @@
+{
+  "name": "voltura-oficial",
+  "version": "1.0.0",
+  "description": "VOLTURA-OFICIAL – pacote e instalador para Windows",
+  "main": "js/main.js",
+  "license": "MIT",
+  "author": "",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win",
+    "dist:x64": "electron-builder --win --x64",
+    "dist:ia32": "electron-builder --win --ia32",
+    "pack": "electron-builder --dir"
+  },
+  "build": {
+    "appId": "com.voltura.oficial",
+    "productName": "VOLTURA OFICIAL",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "!node_modules/.cache/**",
+      "!**/*.map"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^25.3.1",
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {
+    "googleapis": "^153.0.0",
+    "open": "^10.2.0"
+  }
+}

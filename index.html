@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voltura App</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <h3>Contas abertas</h3>
+      <div id="tabs" class="scroll-box"></div>
+
+      <div class="botoes-principais">
+        <button id="instagramButton"><i class="fab fa-instagram"></i> Instagram</button>
+        <button id="tiktokButton"><i class="fab fa-tiktok"></i> TikTok</button>
+        <button id="youtubeButton"><i class="fab fa-youtube"></i> YouTube</button>
+        <button id="facebookButton"><i class="fab fa-facebook-f"></i> Facebook</button>
+
+        <div class="home-clonar">
+          <button id="homeTabButton"><i class="fas fa-home"></i> Home</button>
+          <button id="cloneTabButton"><i class="fas fa-clone"></i> Clonar</button>
+        </div>
+      </div>
+
+ <h3>Agendar postagens</h3>
+<label for="videoFile">Vídeo (único para todos agendamentos):</label>
+<input type="file" id="videoFile" accept="video/*" />
+
+<div id="fileThumbnailContainer" style="display:none; margin-top: 10px;">
+  <h4>Pré-visualização:</h4>
+  <div id="thumbnailPreview"></div>
+</div>
+
+<!-- Contêiner global para o vídeo -->
+<div id="globalVideoContainer" style="display:none; margin-top: 10px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+  <video id="selectedVideo" controls width="500" style="max-width: 100%;"></video>
+</div>
+
+<script>
+  // Função para carregar o vídeo selecionado
+  const videoInput = document.getElementById("videoFile");
+  const videoPreviewContainer = document.getElementById("globalVideoContainer");
+  const videoElement = document.getElementById("selectedVideo");
+
+  videoInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    
+    if (file && file.type.startsWith('video/')) {
+      // Exibe o vídeo
+      const videoURL = URL.createObjectURL(file);
+      videoElement.src = videoURL;
+      videoPreviewContainer.style.display = 'block';
+    } else {
+      alert("Por favor, selecione um arquivo de vídeo.");
+    }
+  });
+</script>
+
+      <div id="scheduleBlocksContainer"></div>
+      <button id="addScheduleButton">+ Adicionar agendamento para conta</button>
+      <button id="submitScheduleButton">Agendar todos</button>
+
+      <hr />
+      <h3>Agendamentos criados</h3>
+      <div id="agendamentos"></div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+      <img src="./image/ChatGPT Image 22 de jul. de 2025, 14_27_54.png" class="imagem-central" />
+      <p class="descricao">Use o painel à esquerda para abrir contas, agendar postagens personalizadas para cada conta e rede social, e clonar abas.</p>
+    </main>
+    
+ 
+  </div>
+
+  <script src="./js/renderer.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/inject-identify-user.js"></script>
+  <script src="js/preload.js"></script>
+</body>
+</html>

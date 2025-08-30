@@ -1,0 +1,410 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #000000;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+#tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px;
+}
+
+.tab-btn {
+  padding: 6px 10px;
+  background: #ccc;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+  flex-shrink: 0;
+}
+.tab-btn i {
+  margin-right: 4px;
+}
+.tab-btn.active {
+  background: #2d89ef;
+}
+
+.close-btn {
+  position: absolute;
+  right: 6px;
+  top: 4px;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 280px; /* ou o valor real que você usa */
+  background: #f1f1f1;
+  overflow-y: auto;
+}
+
+.main-content {
+  flex-grow: 1;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  padding-bottom: 60px;
+}
+
+.imagem-central {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.descricao {
+  color: white;
+  font-size: 16px;
+  max-width: 600px;
+}
+
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+input[type="file"],
+input[type="datetime-local"],
+input[type="text"],
+textarea {
+  display: block;
+  margin: 4px 0 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background-color: #2d89ef;
+  color: white;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #1b5fbd;
+}
+
+/* ESTILO BASE DAS CAIXAS DE AGENDAMENTO */
+.schedule-block {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  color: white;
+}
+
+/* CORES POR REDE SOCIAL */
+.schedule-block.instagram {
+  background-color: #e11a5d; /* rosa Instagram */
+}
+
+.schedule-block.tiktok {
+  background-color: #010101; /* preto TikTok */
+}
+
+.schedule-block.youtube {
+  background-color: #ff0000; /* vermelho YouTube */
+}
+
+/* CABEÇALHO COM ÍCONE + NOME DO USUÁRIO */
+.block-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* ÍCONE CENTRALIZADO POR PADRÃO */
+.block-header i {
+  font-size: 30px;
+  color: white;
+  margin-right: 8px;
+}
+
+/* Se tiver username, alinha à esquerda */
+.block-header .username {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+}
+
+.schedule-block.instagram .block-header,
+.schedule-block.tiktok .block-header,
+.schedule-block.youtube .block-header {
+  flex-direction: column;
+}
+
+.schedule-block.instagram .block-header.has-username,
+.schedule-block.tiktok .block-header.has-username,
+.schedule-block.youtube .block-header.has-username {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+/* AGENDAMENTOS LISTA FINAL */
+#agendamentos {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 15px;
+  background: #2d89ef;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  color: white;
+}
+
+.agendamento-item {
+  border-bottom: 1px solid #ffffff55;
+  padding: 8px 0;
+}
+
+.agendamento-item:last-child {
+  border-bottom: none;
+}
+
+
+/* Botões de acesso lateral com cores por rede */
+#instagramButton {
+  background-color: #e11a5d;
+}
+#instagramButton:hover {
+  background-color: #b00c4d;
+}
+
+#tiktokButton {
+  background-color: #000000;
+}
+#tiktokButton:hover {
+  background-color: #333333;
+  
+}
+
+#youtubeButton {
+  background-color: #FF0000;
+}
+#youtubeButton:hover {
+  background-color: #cc0000;
+}
+
+/* Botão "Clonar aba atual" com cor neutra */
+#cloneTabButton {
+  background-color: #888888;
+}
+#cloneTabButton:hover {
+  background-color: #666666;
+}
+/* Cores por rede social nas abas */
+.tab-btn.instagram {
+  background-color: #E1306C; /* rosa Instagram */
+  color: white;
+}
+.tab-btn.instagram.active {
+  background-color: #b91c5b;
+}
+
+.tab-btn.tiktok {
+  background-color: #000000; /* preto TikTok */
+  color: white;
+}
+.tab-btn.tiktok.active {
+  background-color: #333333;
+}
+
+.tab-btn.youtube {
+  background-color: #FF0000; /* vermelho YouTube */
+  color: white;
+}
+.tab-btn.youtube.active {
+  background-color: #cc0000;
+}
+.tab-btn.facebook {
+  background-color: #1877f2; /* azul Facebook */
+  color: white;
+}
+.tab-btn.facebook.active {
+  background-color: #1b65c7;
+}
+/* Bloco de agendamento - Facebook */
+.schedule-block.facebook {
+  background-color: #632f89; /* azul Facebook */
+}
+
+.schedule-block.facebook .block-header {
+  flex-direction: column;
+}
+
+.schedule-block.facebook .block-header.has-username {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+/* Estilos para a sidebar */
+#sidebar {
+  width: 300px;
+  background-color: #403c42;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+hr {
+    border: 1px solid #ddd;
+}
+
+/* Estilos para a exibição do vídeo */
+.video-container {
+    display: block; /* Agora será exibido */
+    width: 100%;
+    max-width: 500px; /* Tamanho máximo do vídeo */
+    margin-top: 10px;
+    position: relative;
+    background-color: #000; /* Cor de fundo para garantir que o vídeo se destaque */
+    z-index: 10000; /* Garante que o vídeo fique acima de outros elementos */
+}
+/* Estilos para o botão de revisão e agendamento */
+.review-container {
+    margin-top: 20px;
+    text-align: center;
+}
+#videoPreview {
+    width: 100%; /* O vídeo ocupará toda a largura do container */
+    height: auto; /* Ajusta automaticamente a altura para manter a proporção */
+    display: block;
+    margin: 0 auto; /* Centraliza o vídeo */
+    position: absolute;
+}
+#scheduleButton {
+    display: none; /* Esconde o botão até que o vídeo seja revisado */
+   
+}
+
+#videoFile {
+    margin-top: 10px;
+        z-index: 9998;
+}
+
+/* Outras personalizações */
+
+
+
+#scheduleBlocksContainer {
+    margin-top: 20px;
+}
+/* Adicionando estilos para garantir que o vídeo e seus containers sejam visíveis */
+.video-container {
+    display: none; /* Inicialmente oculto */
+    width: 100%;
+    max-width: 500px; /* Tamanho máximo do vídeo */
+    margin-top: 10px;
+    position: relative;
+    background-color: #000; /* Cor de fundo para garantir que o vídeo se destaque */
+}
+
+#videoPreview {
+    width: 100%; /* O vídeo ocupará toda a largura do container */
+    height: auto; /* Ajusta automaticamente a altura para manter a proporção */
+    display: block;
+    margin: 0 auto; /* Centraliza o vídeo */
+}
+
+/* Estilos para a miniatura do arquivo escolhido */
+#fileThumbnailContainer {
+    display: flex; /* Inicialmente oculto */
+    margin-top: 10px;
+    position: relative;
+}
+
+#thumbnailPreview {
+    text-align: center;
+}
+
+#thumbnailPreview img,
+#thumbnailPreview video {
+    margin-top: 10px;
+    max-width: 100%; /* Garante que a miniatura tenha a largura correta */
+    height: auto;
+}
+
+.home-clonar {
+  display: flex;
+  gap: 10px; /* espaço entre os botões */
+  margin-top: 10px;
+  justify-content: center; /* centraliza horizontalmente */
+}
+.home-clonar button {
+  flex: 1;
+  max-width: 100px; /* ou ajuste conforme necessário */
+}/* Centraliza o logo na parte inferior da página */
+#globalVideoContainer {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000; /* Garantir que o vídeo fique acima de outros elementos */
+}
